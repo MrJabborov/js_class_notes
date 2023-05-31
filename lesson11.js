@@ -24,15 +24,24 @@ cars.map ( (value) => {
     console.log(value);
 });
 
-// UPDATE
-console.log('UPDATED THE NAME OF ID3');
+UPDATE
 
+// // 1ST METHOD 
+// console.log('UPDATED THE NAME OF ID3');
+// const onUpdate = (car) => {
+//     let updated = cars.map( (value) => value.id === car.id ? {...value, name: 'BMW'} : value); 
+//     console.log(updated);
+// }
+// onUpdate({id: 3})
+
+
+// 2ND DYNAMIC METHOD
+console.log('UPDATED THE YEAR OF THE ID3 IN DYNAMIC WAY');
 const onUpdate = (car) => {
-    let updated = cars.map( (value) => value.id === car.id ? {...value, name: 'BMW'} : value);
+    let updated = cars.map( (value) => value.id === car.id ? {...value, [car.keyType]: car.value} : value); 
     console.log(updated);
 }
-
-onUpdate({id: 3})
+onUpdate({id: 3, keyType: 'year', value: 1995}) 
 
 // DELETE
 console.log('DELETED THE DATA OF ID3');
