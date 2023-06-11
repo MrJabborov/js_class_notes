@@ -1,4 +1,4 @@
-// MODULE,IIFE, PROTOTYPE, OOP CLASS
+// PROTOTYPE, OOP CLASS
 
 
 //OOP CLASS Constructor function
