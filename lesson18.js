@@ -1,4 +1,5 @@
-// PROMISE
+// // PROMISE
+
 console.log('Started');
 
 let users = {
@@ -59,3 +60,61 @@ facebook('Sophia', '1999');
 
 
 // ASYNC/AWAIT:
+
+console.log('Started');
+
+let members = {
+    username: 'John',
+    password: '2003',
+};
+
+const Facebook = (id, pwd)=> {
+
+    return new Promise ( (resolve, reject) => {
+        setTimeout( ()=> {
+            if(members.username === id && members.password === pwd){
+                resolve ('Welcome to Facebook')
+            }else{
+                reject ('Password or login is wrong')
+            }
+        }, 2000);
+    })
+
+};
+
+const testing = async () => {
+    try {
+        let user = await Facebook('Johsn', '2003');
+        console.log(user);
+    } catch (error) {
+        console.log(error);
+    } finally {
+        console.log('Finished');
+    }
+}
+
+testing();
+
+// BRIEF EXPLANATION
+// we have an object called members that stores a username and password.
+// The Facebook function takes two parameters: id (username) and pwd (password). 
+// It returns a Promise object.
+// Inside the Promise, there is a setTimeout function that simulates a delay of 2000 milliseconds (2 seconds). 
+// This delay represents a network request or server response time.
+// After the delay, the code checks if the provided id and pwd match the values stored in the members object. 
+// If they match, the Promise is resolved with the message "Welcome to Facebook." 
+// If they don't match, the Promise is rejected with the message "Password or login is wrong."
+// After defining the Facebook function, there is another function called testing. 
+// It is defined with the async keyword, which allows the use of await inside it.
+// Inside the testing function, we use a try-catch block to handle any errors that may occur during the asynchronous operation.
+// Within the try block, we use await to pause the execution and wait for the Promise returned by 
+// the Facebook function to be resolved or rejected. If the Promise is resolved, 
+// the resolved value (in this case, the message "Welcome to Facebook") is stored in the user variable and 
+// then logged to the console using console.log(user).
+// If the Promise is rejected, the error message is caught by the catch block and logged to the console using console.log(error).
+// Regardless of whether the Promise is resolved or rejected, 
+// the code inside the finally block is executed, and it logs the message "Finished" to the console.
+// Finally, the testing function is called to start the execution of the asynchronous code.
+// So, when the code is executed, it will output "Started" to the console first. 
+// Then, after a 2-second delay, it will either log "Welcome to Facebook" (if the provided username and password are correct) 
+// or "Password or login is wrong" (if they are incorrect). Finally, it will log "Finished" to the console.
